@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, MessageCircle, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 
@@ -20,17 +19,11 @@ const navLinks = [
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [mounted, setMounted] = useState(false);
     const pathname = usePathname();
-    const { theme, setTheme } = useTheme();
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            setIsScrolled(window.scrollY > 80);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -40,25 +33,25 @@ export function Navbar() {
         <>
             <header
                 className={cn(
-                    "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                    isScrolled ? "py-3" : "py-5"
+                    "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+                    isScrolled ? "py-2" : "py-4"
                 )}
             >
                 <div className="container mx-auto px-4 md:px-6">
                     <div
                         className={cn(
-                            "flex items-center justify-between rounded-full transition-all duration-300 px-6 py-3",
+                            "flex items-center justify-between rounded-full transition-all duration-500 px-6 py-3",
                             isScrolled
-                                ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] border border-white/40 dark:border-white/10"
+                                ? "bg-[#0A0F1E]/80 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]"
                                 : "bg-transparent"
                         )}
                     >
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-2 z-50">
-                            <span className="text-2xl font-bold tracking-tight text-primary">
+                            <span className="text-2xl font-bold tracking-tight text-white">
                                 Kindway
                             </span>
-                            <span className="text-2xl font-light text-accent hidden sm:block">
+                            <span className="text-2xl font-light text-amber-500 hidden sm:block">
                                 BioReZens
                             </span>
                         </Link>
@@ -70,15 +63,15 @@ export function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     className={cn(
-                                        "text-sm font-medium transition-colors hover:text-accent relative py-1",
+                                        "text-sm font-medium transition-colors relative py-1",
                                         pathname === link.href
-                                            ? "text-accent"
-                                            : "text-foreground"
+                                            ? "text-white"
+                                            : "text-gray-400 hover:text-white"
                                     )}
                                 >
                                     {link.name}
                                     {pathname === link.href && (
-                                        <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full" />
+                                        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full" />
                                     )}
                                 </Link>
                             ))}
@@ -86,19 +79,16 @@ export function Navbar() {
 
                         {/* Desktop CTAs */}
                         <div className="hidden lg:flex items-center gap-3">
-                            {mounted && (
-                                <button
-                                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                    className="p-2.5 text-foreground hover:text-accent transition rounded-full hover:bg-muted border border-transparent hover:border-card-border"
-                                    aria-label="Toggle Dark Mode"
-                                >
-                                    {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                                </button>
-                            )}
-                            <a href="tel:+919198846529" className="p-2 text-foreground hover:text-accent transition rounded-full hover:bg-muted">
+                            <a
+                                href="tel:+919198846529"
+                                className="p-2 text-gray-400 hover:text-white transition rounded-full hover:bg-white/10"
+                            >
                                 <Phone size={18} />
                             </a>
-                            <a href="https://wa.me/919198846529" className="p-2 text-foreground hover:text-accent transition rounded-full hover:bg-muted">
+                            <a
+                                href="https://wa.me/919198846529"
+                                className="p-2 text-gray-400 hover:text-white transition rounded-full hover:bg-white/10"
+                            >
                                 <MessageCircle size={18} />
                             </a>
                             <Link href="/register">
@@ -110,17 +100,8 @@ export function Navbar() {
 
                         {/* Mobile Menu Toggle */}
                         <div className="flex items-center gap-3 lg:hidden">
-                            {mounted && (
-                                <button
-                                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                    className="p-2 text-foreground hover:text-accent transition rounded-full"
-                                    aria-label="Toggle Dark Mode"
-                                >
-                                    {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                                </button>
-                            )}
                             <button
-                                className="text-foreground z-50 focus:outline-none"
+                                className="text-white z-50 focus:outline-none"
                                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             >
                                 {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -133,7 +114,7 @@ export function Navbar() {
             {/* Mobile Navigation Drawer */}
             <div
                 className={cn(
-                    "fixed inset-0 bg-background z-40 flex flex-col pt-24 px-6 transition-transform duration-300 ease-in-out lg:hidden",
+                    "fixed inset-0 bg-[#0A0F1E] z-40 flex flex-col pt-24 px-6 transition-transform duration-300 ease-in-out lg:hidden",
                     isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
                 )}
             >
@@ -144,7 +125,7 @@ export function Navbar() {
                             href={link.href}
                             className={cn(
                                 "text-2xl font-medium transition-colors",
-                                pathname === link.href ? "text-accent" : "text-foreground"
+                                pathname === link.href ? "text-amber-500" : "text-gray-300"
                             )}
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -152,16 +133,25 @@ export function Navbar() {
                         </Link>
                     ))}
                     <div className="mt-8 flex flex-col gap-4">
-                        <Link href="/register" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Link
+                            href="/register"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
                             <Button variant="primary" size="lg" className="w-full">
                                 Book Workshop
                             </Button>
                         </Link>
                         <div className="flex justify-center gap-6 mt-6">
-                            <a href="tel:+919198846529" className="text-foreground hover:text-accent transition">
+                            <a
+                                href="tel:+919198846529"
+                                className="text-gray-400 hover:text-white transition"
+                            >
                                 <Phone size={28} />
                             </a>
-                            <a href="https://wa.me/919198846529" className="text-foreground hover:text-accent transition">
+                            <a
+                                href="https://wa.me/919198846529"
+                                className="text-gray-400 hover:text-white transition"
+                            >
                                 <MessageCircle size={28} />
                             </a>
                         </div>

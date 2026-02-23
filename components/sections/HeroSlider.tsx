@@ -1,117 +1,137 @@
 "use client";
-import React, { useCallback, useEffect } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/Button";
 
-const slides = [
-    {
-        title: "Elevating Dental Excellence",
-        description: "At Kindway Biorezens, we are dedicated to the advancement of dental healthcare. We take pride in our mission to empower dental professionals with innovative solutions, cutting-edge products, and unwavering support.",
-        image: "/images/bg2.jpg",
-        cta1: { text: "Discover Now", href: "/products" },
-        cta2: { text: "Read More", href: "/about" },
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.15, delayChildren: 0.3 },
     },
-    {
-        title: "Why Choose Kindway",
-        description: "We’re not just a company but committed to advancing dental care through innovation, quality, and precision.",
-        image: "/images/bg3.jpg",
-        cta1: { text: "View Products", href: "/products" },
-        cta2: { text: "Read More", href: "/about" },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.7, ease: [0.25, 0.4, 0.25, 1] as const },
     },
-    {
-        title: "Pioneering Products",
-        description: "We offer a curated selection of dental products and medical devices that are at the forefront of dental technology.",
-        image: "/images/b3.jpg",
-        cta1: { text: "View Product Catalogue", href: "/products" },
-        cta2: { text: "Read More", href: "/about" },
-    },
-    {
-        title: "Training and Education",
-        description: "At Kindway Biorezens, we believe in continuous learning. We offer training, workshops, and educational resources to empower dental professionals with the latest techniques and best practices.",
-        image: "/images/training.jpg",
-        cta1: { text: "Book Training", href: "/training" },
-        cta2: { text: "Read More", href: "/about" },
-    },
+} as const;
+
+const trustItems = [
+    { label: "1500+ Workshops" },
+    { label: "1160+ Dentists Trained" },
+    { label: "1145+ Medical Camps" },
 ];
 
 export function HeroSlider() {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 });
-
-    const scrollPrev = useCallback(() => {
-        if (emblaApi) emblaApi.scrollPrev();
-    }, [emblaApi]);
-
-    const scrollNext = useCallback(() => {
-        if (emblaApi) emblaApi.scrollNext();
-    }, [emblaApi]);
-
-    useEffect(() => {
-        if (!emblaApi) return;
-        const autoplay = setInterval(() => {
-            emblaApi.scrollNext();
-        }, 5000);
-        return () => clearInterval(autoplay);
-    }, [emblaApi]);
-
     return (
-        <div className="relative overflow-hidden w-full h-[85vh] min-h-[600px] group" ref={emblaRef}>
-            <div className="flex h-full w-full">
-                {slides.map((slide, index) => (
-                    <div key={index} className="flex-[0_0_100%] min-w-0 relative h-full">
-                        <div
-                            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
-                            style={{ backgroundImage: `url(${slide.image})` }}
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
-                        </div>
-
-                        <div className="absolute inset-0 flex items-center justify-start p-6 container mx-auto md:px-12">
-                            <motion.div
-                                initial={{ opacity: 0, x: -50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                className="max-w-2xl space-y-6 bg-white/5 p-8 md:p-12 rounded-3xl backdrop-blur-md border border-white/10 shadow-2xl"
-                            >
-                                <h1 className="text-4xl md:text-6xl font-display font-bold text-white drop-shadow-md leading-tight">
-                                    {slide.title}
-                                </h1>
-                                <p className="text-lg md:text-xl text-blue-50 max-w-2xl drop-shadow">
-                                    {slide.description}
-                                </p>
-                                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                    <Link href={slide.cta1.href}>
-                                        <Button variant="primary" size="lg" className="w-full sm:w-auto shadow-lg hover:shadow-xl">
-                                            {slide.cta1.text}
-                                        </Button>
-                                    </Link>
-                                    <Link href={slide.cta2.href}>
-                                        <Button variant="outline" size="lg" className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-primary">
-                                            {slide.cta2.text}
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </motion.div>
-                        </div>
-                    </div>
-                ))}
+        <section className="relative min-h-screen bg-[#0A0F1E] flex items-center justify-center overflow-hidden">
+            {/* Animated Gradient Mesh - Orbs */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {/* Blue Orb */}
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-blue-600/20 rounded-full filter blur-[120px] animate-orb-1" />
+                {/* Emerald Orb */}
+                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-emerald-500/15 rounded-full filter blur-[120px] animate-orb-2" />
+                {/* Subtle ambient */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full filter blur-[150px]" />
             </div>
 
-            {/* Navigation */}
-            <button
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all opacity-0 group-hover:opacity-100 z-10"
-                onClick={scrollPrev}
-            >
-                <ChevronLeft size={24} />
-            </button>
-            <button
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all opacity-0 group-hover:opacity-100 z-10"
-                onClick={scrollNext}
-            >
-                <ChevronRight size={24} />
-            </button>
-        </div>
+            {/* Grid overlay for texture */}
+            <div className="absolute inset-0 grid-overlay opacity-30 pointer-events-none" />
+
+            {/* Content */}
+            <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="max-w-4xl mx-auto text-center"
+                >
+                    {/* Pill Badge */}
+                    <motion.div variants={itemVariants} className="mb-8">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 backdrop-blur-sm">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                            Advancing Dental Healthcare Since 2015
+                        </span>
+                    </motion.div>
+
+                    {/* Headline */}
+                    <motion.h1
+                        variants={itemVariants}
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.95] mb-8"
+                    >
+                        <span className="text-white block">Elevating Dental</span>
+                        <span className="text-gradient block mt-2">Excellence</span>
+                    </motion.h1>
+
+                    {/* Subheadline */}
+                    <motion.p
+                        variants={itemVariants}
+                        className="text-lg md:text-xl text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed"
+                    >
+                        Advanced dental implants, biomaterials, and expert training
+                        workshops — empowering dental professionals across India.
+                    </motion.p>
+
+                    {/* CTAs */}
+                    <motion.div
+                        variants={itemVariants}
+                        className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+                    >
+                        <Link href="/register">
+                            <Button variant="primary" size="lg" className="w-full sm:w-auto">
+                                Book a Workshop →
+                            </Button>
+                        </Link>
+                        <Link href="/products">
+                            <Button
+                                variant="secondary"
+                                size="lg"
+                                className="w-full sm:w-auto"
+                            >
+                                View Products
+                            </Button>
+                        </Link>
+                    </motion.div>
+
+                    {/* Trust Bar */}
+                    <motion.div
+                        variants={itemVariants}
+                        className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-0"
+                    >
+                        {trustItems.map((item, i) => (
+                            <React.Fragment key={item.label}>
+                                {i > 0 && (
+                                    <div className="hidden sm:block w-px h-4 bg-white/10 mx-8" />
+                                )}
+                                <span className="text-sm text-gray-400 flex items-center gap-2">
+                                    <svg
+                                        className="w-4 h-4 text-emerald-500"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth={3}
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                    {item.label}
+                                </span>
+                            </React.Fragment>
+                        ))}
+                    </motion.div>
+                </motion.div>
+            </div>
+
+            {/* Bottom fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0F1E] to-transparent pointer-events-none" />
+        </section>
     );
 }

@@ -1,117 +1,121 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import React from "react";
+import { Star } from "lucide-react";
 import { testimonials } from "@/lib/data/testimonials";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
-export function TestimonialsSection() {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30, align: "center" });
-    const [selectedIndex, setSelectedIndex] = useState(0);
+// Duplicate testimonials for infinite scroll
+const allTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
-    const scrollPrev = useCallback(() => {
-        if (emblaApi) emblaApi.scrollPrev();
-    }, [emblaApi]);
+// Gradient colors for avatars
+const avatarGradients = [
+    "from-blue-500 to-cyan-400",
+    "from-emerald-500 to-teal-400",
+    "from-amber-500 to-orange-400",
+    "from-purple-500 to-pink-400",
+];
 
-    const scrollNext = useCallback(() => {
-        if (emblaApi) emblaApi.scrollNext();
-    }, [emblaApi]);
-
-    useEffect(() => {
-        if (!emblaApi) return;
-        const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
-        emblaApi.on("select", onSelect);
-        onSelect();
-
-        const autoplay = setInterval(() => {
-            emblaApi.scrollNext();
-        }, 6000);
-        return () => {
-            clearInterval(autoplay);
-            emblaApi.off("select", onSelect);
-        };
-    }, [emblaApi]);
+function TestimonialCard({
+    testimonial,
+    index,
+}: {
+    testimonial: (typeof testimonials)[0];
+    index: number;
+}) {
+    const gradientClass =
+        avatarGradients[index % avatarGradients.length];
 
     return (
-        <section className="py-24 bg-muted relative overflow-hidden">
-            {/* Decorative Orbs */}
-            <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
+        <div className="glass-card p-6 min-w-[320px] max-w-[380px] flex-shrink-0 mx-3 group">
+            {/* Stars */}
+            <div className="flex gap-1 mb-4">
+                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <Star
+                        key={i}
+                        size={16}
+                        className="text-amber-500 fill-amber-500"
+                    />
+                ))}
+            </div>
 
-            <div className="container mx-auto px-4 md:px-6 relative z-10">
-                <AnimatedSection className="text-center max-w-2xl mx-auto mb-16">
-                    <span className="text-accent font-semibold tracking-wider text-sm uppercase mb-2 block">Testimonials</span>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
+            {/* Quote */}
+            <blockquote className="text-gray-300 text-sm leading-relaxed mb-6 line-clamp-4">
+                &ldquo;{testimonial.quote}&rdquo;
+            </blockquote>
+
+            {/* Author */}
+            <div className="flex items-center gap-3">
+                <div
+                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${gradientClass} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}
+                >
+                    {testimonial.name.charAt(0)}
+                </div>
+                <div>
+                    <h4 className="text-white font-semibold text-sm">
+                        {testimonial.name}
+                    </h4>
+                    <p className="text-gray-500 text-xs">
+                        {testimonial.designation}, {testimonial.location}
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export function TestimonialsSection() {
+    return (
+        <section className="py-24 bg-[#0A0F1E] relative overflow-hidden">
+            {/* Background */}
+            <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="relative z-10">
+                {/* Section Header */}
+                <AnimatedSection className="text-center max-w-2xl mx-auto mb-16 px-4">
+                    <span className="text-amber-500 font-semibold tracking-wider text-sm uppercase mb-2 block">
+                        Testimonials
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                         Trusted by Leading Clinicians
                     </h2>
-                    <p className="text-muted-foreground text-lg">
-                        Hear from dental professionals who have elevated their practice with our products and training programs.
+                    <p className="text-gray-400 text-lg">
+                        Hear from dental professionals who have elevated their practice with
+                        our products and training programs.
                     </p>
                 </AnimatedSection>
 
-                <AnimatedSection delay={0.2}>
-                    <div className="relative max-w-4xl mx-auto group">
-                        <div className="overflow-hidden" ref={emblaRef}>
-                            <div className="flex">
-                                {testimonials.map((testimonial) => (
-                                    <div key={testimonial.id} className="flex-[0_0_100%] min-w-0 px-4">
-                                        <div className="bg-card border border-card-border rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-lg">
-                                            {/* Quote Icon */}
-                                            <Quote size={48} className="text-primary/10 mx-auto mb-6" />
-
-                                            {/* Stars */}
-                                            <div className="flex justify-center gap-1 mb-6">
-                                                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                                                    <Star key={i} size={20} className="text-accent fill-accent" />
-                                                ))}
-                                            </div>
-
-                                            <blockquote className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-8 max-w-2xl mx-auto italic">
-                                                &ldquo;{testimonial.quote}&rdquo;
-                                            </blockquote>
-
-                                            <div>
-                                                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary font-bold text-lg">
-                                                    {testimonial.name.charAt(0)}
-                                                </div>
-                                                <h4 className="text-lg font-bold text-foreground">{testimonial.name}</h4>
-                                                <p className="text-muted-foreground text-sm">{testimonial.designation}, {testimonial.location}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Navigation */}
-                        <button
-                            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-card border border-card-border hover:bg-primary hover:text-white hover:border-primary rounded-full flex items-center justify-center text-foreground transition-all opacity-0 group-hover:opacity-100 shadow-lg z-10"
-                            onClick={scrollPrev}
-                        >
-                            <ChevronLeft size={20} />
-                        </button>
-                        <button
-                            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-card border border-card-border hover:bg-primary hover:text-white hover:border-primary rounded-full flex items-center justify-center text-foreground transition-all opacity-0 group-hover:opacity-100 shadow-lg z-10"
-                            onClick={scrollNext}
-                        >
-                            <ChevronRight size={20} />
-                        </button>
-
-                        {/* Dots */}
-                        <div className="flex justify-center gap-2 mt-8">
-                            {testimonials.map((_, index) => (
-                                <button
-                                    key={index}
-                                    className={`h-2 rounded-full transition-all duration-300 ${index === selectedIndex
-                                        ? "w-8 bg-primary"
-                                        : "w-2 bg-primary/20 hover:bg-primary/40"
-                                        }`}
-                                    onClick={() => emblaApi?.scrollTo(index)}
-                                />
-                            ))}
-                        </div>
+                {/* Marquee Row 1 — left */}
+                <div className="relative mb-6 overflow-hidden">
+                    <div className="flex animate-marquee hover:[animation-play-state:paused]">
+                        {allTestimonials.map((testimonial, index) => (
+                            <TestimonialCard
+                                key={`row1-${index}`}
+                                testimonial={testimonial}
+                                index={index}
+                            />
+                        ))}
                     </div>
-                </AnimatedSection>
+                    {/* Edge fades */}
+                    <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0A0F1E] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0A0F1E] to-transparent z-10 pointer-events-none" />
+                </div>
+
+                {/* Marquee Row 2 — right (reverse) */}
+                <div className="relative overflow-hidden">
+                    <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
+                        {[...allTestimonials].reverse().map((testimonial, index) => (
+                            <TestimonialCard
+                                key={`row2-${index}`}
+                                testimonial={testimonial}
+                                index={index + 2}
+                            />
+                        ))}
+                    </div>
+                    {/* Edge fades */}
+                    <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0A0F1E] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0A0F1E] to-transparent z-10 pointer-events-none" />
+                </div>
             </div>
         </section>
     );

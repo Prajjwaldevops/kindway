@@ -17,7 +17,7 @@ const teamMembers = [
     {
         name: "Prof. Monika Bansal",
         role: "Co-Founder & Clinical Head",
-        image: "/images/mam.jpg",
+        image: "/images/t5.jpg",
     }
 ];
 
