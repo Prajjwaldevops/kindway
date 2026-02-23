@@ -1,0 +1,47 @@
+﻿
+> kindway-nextjs@0.1.0 lint
+> next lint
+
+node.exe : 
+At C:\Program Files\nod
+ejs\npm.ps1:29 char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (:String) [],    
+ RemoteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+./app/register/page.tsx
+3:8  Error: 'Image' is 
+defined but never 
+used.  @typescript-esli
+nt/no-unused-vars
+
+./app/training/page.tsx
+3:10  Error: 
+'CTABanner' is defined 
+but never used.  @types
+cript-eslint/no-unused-
+vars
+
+./components/ui/Card.ts
+x
+4:18  Error: An 
+interface declaring no 
+members is equivalent 
+to its supertype.  @typ
+escript-eslint/no-empty
+-object-type
+
+info  - Need to 
+disable some ESLint 
+rules? Learn more 
+here: https://nextjs.or
+g/docs/basic-features/e
+slint#disabling-rules
