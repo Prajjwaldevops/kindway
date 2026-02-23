@@ -1,3 +1,13 @@
+TOOK 7 HOURS TO COMPLETRLY TRANSFORM DULL LOKKING HTML CSS SITE TO NEXT JS SITE YEAH I TOOK TIME BUT NOT THE FASTEST BUT I CAN ASSURE THE EFFICIENT USED THE SAME DATA CODE AS GIVEN TRANSFORMED THE WEBSITE ONLY STRICTLY THATS WAS ALL THANK YOU HAXPLOREE TEAM
+
+
+
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
