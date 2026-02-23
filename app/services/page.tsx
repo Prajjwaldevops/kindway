@@ -23,7 +23,7 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-muted">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="space-y-24">
                         {services.map((service, index) => (
@@ -45,13 +45,13 @@ export default function ServicesPage() {
 
                                 <div className="w-full lg:w-1/2 space-y-6">
                                     <span className="text-accent font-semibold tracking-wider text-sm uppercase block">Service Area</span>
-                                    <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 leading-tight">
+                                    <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground leading-tight">
                                         {service.title}
                                     </h2>
-                                    <p className="text-xl text-gray-600 font-medium">
+                                    <p className="text-xl text-muted-foreground font-medium">
                                         {service.shortDescription}
                                     </p>
-                                    <p className="text-lg text-gray-600 leading-relaxed">
+                                    <p className="text-lg text-muted-foreground leading-relaxed">
                                         {service.fullDescription}
                                     </p>
                                     {service.slug === "dental-implants" || service.slug === "bone-grafts" ? (

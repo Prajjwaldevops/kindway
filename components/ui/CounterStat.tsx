@@ -39,7 +39,7 @@ export function CounterStat({
                 {count}
                 {suffix}
             </div>
-            <p className="text-gray-700 font-medium text-lg">{label}</p>
+            <p className="text-foreground font-medium text-lg">{label}</p>
         </div>
     );
 }

@@ -29,7 +29,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <article className="bg-white min-h-screen pb-24">
+        <article className="bg-background min-h-screen pb-24">
             {/* Blog Hero */}
             <header className="relative w-full h-[50vh] min-h-[400px]">
                 <Image
@@ -73,12 +73,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             {/* Content */}
             <div className="container mx-auto px-4 md:px-6 pt-16">
                 <div className="max-w-3xl mx-auto">
-                    <p className="text-xl text-gray-600 leading-relaxed font-medium mb-10 border-l-4 border-accent pl-6 italic">
+                    <p className="text-xl text-muted-foreground leading-relaxed font-medium mb-10 border-l-4 border-accent pl-6 italic">
                         &quot;{post.excerpt}&quot;
                     </p>
 
-                    <div className="prose prose-lg prose-blue max-w-none text-gray-700">
-                        {/* Split paragraphs by double newlines, just for simple rendering */}
+                    <div className="prose prose-lg prose-blue dark:prose-invert max-w-none text-foreground/80">
                         {post.content.split('\n\n').map((paragraph, index) => (
                             <p key={index} className="mb-6 leading-loose">
                                 {paragraph}
@@ -86,15 +85,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                         ))}
                     </div>
 
-                    <hr className="my-16 border-gray-100" />
+                    <hr className="my-16 border-card-border" />
 
                     <div className="text-center">
-                        <h3 className="text-xl font-bold text-gray-900 mb-6">Share this article</h3>
+                        <h3 className="text-xl font-bold text-foreground mb-6">Share this article</h3>
                         <div className="flex justify-center gap-4">
-                            {/* Dummy social share buttons */}
-                            <button className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors">f</button>
-                            <button className="w-10 h-10 rounded-full bg-sky-50 text-sky-500 flex items-center justify-center hover:bg-sky-500 hover:text-white transition-colors">in</button>
-                            <button className="w-10 h-10 rounded-full bg-blue-50 text-blue-400 flex items-center justify-center hover:bg-blue-400 hover:text-white transition-colors">t</button>
+                            <button className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">f</button>
+                            <button className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">in</button>
+                            <button className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">t</button>
                         </div>
                     </div>
                 </div>

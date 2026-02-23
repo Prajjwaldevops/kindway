@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function RegisterPage() {
     return (
-        <section className="min-h-screen bg-gray-50 py-12 md:py-24">
+        <section className="min-h-screen bg-muted py-12 md:py-24">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
+                <div className="max-w-6xl mx-auto bg-card rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row border border-card-border">
 
                     {/* Hero / Info Side */}
                     <div className="w-full lg:w-5/12 bg-primary relative p-10 md:p-14 text-white flex flex-col justify-between overflow-hidden">
@@ -59,8 +59,8 @@ export default function RegisterPage() {
                     </div>
 
                     {/* Form Side */}
-                    <div className="w-full lg:w-7/12 p-10 md:p-14 bg-white relative">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-8">Registration Form</h2>
+                    <div className="w-full lg:w-7/12 p-10 md:p-14 bg-card relative">
+                        <h2 className="text-2xl font-bold text-foreground mb-8">Registration Form</h2>
                         <RegisterForm />
                     </div>
 

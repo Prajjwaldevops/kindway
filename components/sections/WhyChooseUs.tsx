@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 
 export function WhyChooseUs() {
     return (
-        <section className="py-24 bg-gray-50 relative overflow-hidden">
+        <section className="py-24 bg-muted relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -23,16 +23,16 @@ export function WhyChooseUs() {
                     <div className="order-1 lg:order-2 space-y-8">
                         <div>
                             <span className="text-accent font-semibold tracking-wider text-sm uppercase mb-2 block">Why Choose</span>
-                            <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                            <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
                                 Kindway Biorezens
                             </h2>
                         </div>
 
-                        <p className="text-gray-600 leading-relaxed text-lg">
+                        <p className="text-muted-foreground leading-relaxed text-lg">
                             At Kindway Biorezens, we are driven by a mission to reshape the future of dentistry through innovation, accessibility, and compassionate care. As a pioneering startup in dental manufacturing and healthcare services, we design and produce advanced, reliable, and affordable dental implants, biomaterials, and devices that meet global standards of safety and performance.
                         </p>
 
-                        <p className="text-gray-600 leading-relaxed text-lg">
+                        <p className="text-muted-foreground leading-relaxed text-lg">
                             Our vision is clear — to elevate dental care, enhance patient quality of life, and support clinicians with technology that simplifies and strengthens clinical practice.
                         </p>
 

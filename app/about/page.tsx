@@ -36,16 +36,16 @@ export default function AboutPage() {
             </section>
 
             {/* Our Story */}
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-background">
                 <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center space-y-8">
                     <span className="text-accent font-semibold tracking-wider text-sm uppercase mb-2 block">Our Story</span>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900">
+                    <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground">
                         A Legacy of Excellence
                     </h2>
-                    <p className="text-gray-600 leading-relaxed text-lg">
+                    <p className="text-muted-foreground leading-relaxed text-lg">
                         Kindway Biorezens started with a simple yet profound vision: to bridge the gap between world-class dental technology and clinical accessibility. As a manufacturing-driven startup, we committed ourselves to research and development, aiming to produce biomaterials and implants that not only match but exceed global standards.
                     </p>
-                    <p className="text-gray-600 leading-relaxed text-lg">
+                    <p className="text-muted-foreground leading-relaxed text-lg">
                         Today, we are proud to support thousands of clinicians worldwide, enhancing patient outcomes through our rigorously tested product lines and continuous educational initiatives.
                     </p>
                 </div>
@@ -54,14 +54,14 @@ export default function AboutPage() {
             <MissionVision />
 
             {/* Team Section */}
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-muted">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="text-center max-w-2xl mx-auto mb-16">
                         <span className="text-accent font-semibold tracking-wider text-sm uppercase mb-2 block">Leadership</span>
-                        <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                        <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
                             Meet Our Team
                         </h2>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-muted-foreground text-lg">
                             Guided by experienced clinicians and industry veterans, our leadership team is dedicated to driving innovation in dental healthcare.
                         </p>
                     </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
                     <div className="flex flex-wrap justify-center gap-12">
                         {teamMembers.map((member) => (
                             <div key={member.name} className="flex flex-col items-center text-center group w-full sm:w-80">
-                                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-6 border-4 border-white shadow-xl group-hover:scale-105 transition-transform duration-500">
+                                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-6 border-4 border-card shadow-xl group-hover:scale-105 transition-transform duration-500">
                                     <Image
                                         src={member.image}
                                         alt={member.name}
@@ -77,7 +77,7 @@ export default function AboutPage() {
                                         className="object-cover"
                                     />
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                                <h3 className="text-2xl font-bold text-foreground mb-2">{member.name}</h3>
                                 <p className="text-accent font-medium">{member.role}</p>
                             </div>
                         ))}

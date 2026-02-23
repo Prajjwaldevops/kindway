@@ -10,15 +10,15 @@ export function TrainingSection() {
     const upcomingWorkshops = workshops.slice(0, 2);
 
     return (
-        <section className="py-24 bg-gray-50 relative overflow-hidden">
+        <section className="py-24 bg-muted relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                     <div className="max-w-2xl">
                         <span className="text-accent font-semibold tracking-wider text-sm uppercase mb-2 block">What Sets Us Apart</span>
-                        <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                        <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
                             Training and Education
                         </h2>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-muted-foreground text-lg">
                             At Kindway Biorezens, we believe that excellence in dentistry is built on continuous learning. We invest in the growth of dental professionals by offering advanced, practice-oriented training.
                         </p>
                     </div>
@@ -31,7 +31,7 @@ export function TrainingSection() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {upcomingWorkshops.map((workshop) => (
-                        <div key={workshop.slug} className="bg-white border border-gray-100 hover:shadow-xl transition-shadow duration-300 rounded-3xl overflow-hidden group flex flex-col sm:flex-row">
+                        <div key={workshop.slug} className="bg-card border border-card-border hover:shadow-xl transition-shadow duration-300 rounded-3xl overflow-hidden group flex flex-col sm:flex-row">
                             <div className="relative w-full sm:w-2/5 h-64 sm:h-auto overflow-hidden">
                                 <Image
                                     src={workshop.image}
@@ -43,12 +43,12 @@ export function TrainingSection() {
                             <div className="p-8 sm:w-3/5 flex flex-col justify-between space-y-4">
                                 <div>
                                     <Badge className="mb-4">{workshop.category}</Badge>
-                                    <h3 className="text-xl font-bold text-gray-900 leading-tight mb-2">
+                                    <h3 className="text-xl font-bold text-foreground leading-tight mb-2">
                                         {workshop.title}
                                     </h3>
                                 </div>
 
-                                <div className="space-y-3 text-sm text-gray-600">
+                                <div className="space-y-3 text-sm text-muted-foreground">
                                     <div className="flex items-center gap-2">
                                         <Calendar size={16} className="text-primary" />
                                         <span>{workshop.date}</span>
@@ -63,7 +63,7 @@ export function TrainingSection() {
                                     </div>
                                 </div>
 
-                                <div className="pt-4 flex items-center justify-between border-t border-gray-100">
+                                <div className="pt-4 flex items-center justify-between border-t border-card-border">
                                     <span className="text-sm font-medium text-accent">
                                         {workshop.seatsLeft} seats left
                                     </span>

@@ -17,7 +17,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-// Ensure static generation for all products
 export async function generateStaticParams() {
     return products.map((product) => ({
         slug: product.slug,
@@ -33,7 +32,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
 
     return (
         <>
-            <section className="bg-white py-12 md:py-24">
+            <section className="bg-background py-12 md:py-24">
                 <div className="container mx-auto px-4 md:px-6 max-w-6xl">
                     <Link href="/products" className="inline-flex items-center text-primary font-medium hover:text-accent transition-colors mb-12">
                         <ChevronLeft size={20} className="mr-2" /> Back to Products
@@ -56,22 +55,22 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
                                 <span className="text-accent font-semibold tracking-wider text-sm uppercase mb-3 block">
                                     {product.category.replace("-", " ")}
                                 </span>
-                                <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6 leading-tight">
+                                <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
                                     {product.name}
                                 </h1>
-                                <p className="text-xl text-gray-600 leading-relaxed">
+                                <p className="text-xl text-muted-foreground leading-relaxed">
                                     {product.fullDescription}
                                 </p>
                             </div>
 
                             {/* Specifications */}
-                            <div className="space-y-6 bg-gray-50 rounded-2xl p-8 border border-gray-100">
-                                <h3 className="text-2xl font-bold text-gray-900">Specifications</h3>
+                            <div className="space-y-6 bg-muted rounded-2xl p-8 border border-card-border">
+                                <h3 className="text-2xl font-bold text-foreground">Specifications</h3>
                                 <dl className="space-y-4">
                                     {Object.entries(product.specifications).map(([key, value]) => (
-                                        <div key={key} className="flex justify-between border-b border-gray-200 pb-3 last:border-0 last:pb-0">
-                                            <dt className="text-gray-500 capitalize">{key.replace("-", " ")}</dt>
-                                            <dd className="font-medium text-gray-900">{value}</dd>
+                                        <div key={key} className="flex justify-between border-b border-card-border pb-3 last:border-0 last:pb-0">
+                                            <dt className="text-muted-foreground capitalize">{key.replace("-", " ")}</dt>
+                                            <dd className="font-medium text-foreground">{value}</dd>
                                         </div>
                                     ))}
                                 </dl>
@@ -79,12 +78,12 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
 
                             {/* Clinical Indications */}
                             <div className="space-y-6">
-                                <h3 className="text-2xl font-bold text-gray-900">Clinical Indications</h3>
+                                <h3 className="text-2xl font-bold text-foreground">Clinical Indications</h3>
                                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     {product.clinicalIndications.map((ind, i) => (
                                         <li key={i} className="flex items-start gap-3">
                                             <CheckCircle2 className="text-primary mt-0.5 shrink-0" size={20} />
-                                            <span className="text-gray-700">{ind}</span>
+                                            <span className="text-muted-foreground">{ind}</span>
                                         </li>
                                     ))}
                                 </ul>

@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-    // Simulating a featured post
     const featuredPost = blogPosts[0];
     const regularPosts = blogPosts.slice(1);
 
@@ -28,13 +27,13 @@ export default function BlogPage() {
                 </div>
             </section>
 
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-muted">
                 <div className="container mx-auto px-4 md:px-6">
                     {/* Featured Post */}
                     <div className="mb-16">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-8 border-b pb-4">Featured Article</h2>
+                        <h2 className="text-2xl font-bold text-foreground mb-8 border-b border-card-border pb-4">Featured Article</h2>
                         <Link href={`/blog/${featuredPost.slug}`} className="group block">
-                            <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row border border-gray-100">
+                            <div className="bg-card rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row border border-card-border">
                                 <div className="relative w-full md:w-1/2 h-72 md:h-auto overflow-hidden">
                                     <Image
                                         src={featuredPost.image}
@@ -42,21 +41,21 @@ export default function BlogPage() {
                                         fill
                                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
-                                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold text-primary">
+                                    <div className="absolute top-4 left-4 bg-card/90 dark:bg-slate-800/90 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold text-primary">
                                         {featuredPost.category}
                                     </div>
                                 </div>
                                 <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                                    <div className="flex items-center gap-1.5 text-sm text-gray-500 mb-4">
+                                    <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-4">
                                         <Calendar size={16} />
                                         {featuredPost.date}
                                         <span className="mx-2">•</span>
                                         <span className="font-medium text-primary">{featuredPost.author}</span>
                                     </div>
-                                    <h3 className="text-3xl font-display font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors">
+                                    <h3 className="text-3xl font-display font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
                                         {featuredPost.title}
                                     </h3>
-                                    <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                                    <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                                         {featuredPost.excerpt}
                                     </p>
                                     <span className="text-primary font-medium flex items-center gap-2 group-hover:text-accent transition-colors">
@@ -67,10 +66,10 @@ export default function BlogPage() {
                         </Link>
                     </div>
 
-                    <h2 className="text-2xl font-bold text-gray-900 mb-8 border-b pb-4">Recent Posts</h2>
+                    <h2 className="text-2xl font-bold text-foreground mb-8 border-b border-card-border pb-4">Recent Posts</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {regularPosts.map((post) => (
-                            <Card key={post.slug} className="group border-gray-100 hover:border-primary/20 bg-white transition-all duration-300 h-full flex flex-col">
+                            <Card key={post.slug} className="group border-card-border hover:border-primary/20 bg-card transition-all duration-300 h-full flex flex-col">
                                 <div className="relative h-56 w-full overflow-hidden rounded-t-2xl">
                                     <Image
                                         src={post.image}
@@ -78,21 +77,21 @@ export default function BlogPage() {
                                         fill
                                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
-                                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-primary">
+                                    <div className="absolute top-4 left-4 bg-card/90 dark:bg-slate-800/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-primary">
                                         {post.category}
                                     </div>
                                 </div>
                                 <CardContent className="p-8 flex flex-col flex-grow">
-                                    <div className="flex justify-between items-center text-xs text-gray-500 mb-4">
+                                    <div className="flex justify-between items-center text-xs text-muted-foreground mb-4">
                                         <div className="flex items-center gap-1.5">
                                             <Calendar size={14} />
                                             {post.date}
                                         </div>
                                     </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
                                         {post.title}
                                     </h3>
-                                    <p className="text-gray-600 mb-6 line-clamp-3 text-sm flex-grow">
+                                    <p className="text-muted-foreground mb-6 line-clamp-3 text-sm flex-grow">
                                         {post.excerpt}
                                     </p>
                                     <Link href={`/blog/${post.slug}`} className="mt-auto">

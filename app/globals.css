@@ -5,7 +5,7 @@
 :root {
   --background: #F8FAFC;
   --foreground: #1E293B;
-  
+
   --primary: #0A4D8C;
   --primary-dark: #073B69;
   --secondary: #FFFFFF;
@@ -14,18 +14,28 @@
 
   --glass-border: rgba(255, 255, 255, 0.2);
   --glass-bg: rgba(255, 255, 255, 0.7);
+
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #f8fafc;
-    --primary: #3b82f6; 
-    --primary-dark: #2563eb;
-    --secondary: #1e293b;
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-bg: rgba(15, 23, 42, 0.6);
-  }
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #1e293b;
+  --accent: #f59e0b;
+  --accent-hover: #d97706;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(15, 23, 42, 0.7);
+
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
 }
 
 body {
@@ -41,14 +51,26 @@ body {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
 }
 
-/* Base styles for scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: 4px;
+}
+
+/* Smooth section transitions for dark mode */
+section,
+footer,
+header,
+nav,
+main,
+div {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

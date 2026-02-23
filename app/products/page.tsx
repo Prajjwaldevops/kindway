@@ -25,11 +25,11 @@ export default function ProductsPage() {
                 </div>
             </section>
 
-            <section className="py-24 bg-gray-50 min-h-screen">
+            <section className="py-24 bg-muted min-h-screen">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {products.map((product) => (
-                            <Card key={product.slug} className="group flex flex-col h-full border-gray-100 hover:border-primary/20 bg-white hover:bg-white shadow-sm hover:shadow-xl transition-all duration-300">
+                            <Card key={product.slug} className="group flex flex-col h-full border-card-border hover:border-primary/20 bg-card hover:bg-card shadow-sm hover:shadow-xl transition-all duration-300">
                                 <div className="relative h-64 w-full overflow-hidden rounded-t-2xl">
                                     <Image
                                         src={product.image}
@@ -37,13 +37,13 @@ export default function ProductsPage() {
                                         fill
                                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
-                                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-primary">
+                                    <div className="absolute top-4 right-4 bg-card/90 dark:bg-slate-800/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-primary">
                                         {product.category.replace("-", " ")}
                                     </div>
                                 </div>
                                 <CardContent className="p-8 flex flex-col flex-grow">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{product.name}</h3>
-                                    <p className="text-gray-600 mb-8 flex-grow">
+                                    <h3 className="text-2xl font-bold text-foreground mb-3">{product.name}</h3>
+                                    <p className="text-muted-foreground mb-8 flex-grow">
                                         {product.shortDescription}
                                     </p>
                                     <Link href={`/products/${product.slug}`} className="mt-auto block w-full">

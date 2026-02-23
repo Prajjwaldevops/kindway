@@ -24,11 +24,11 @@ export default function TrainingPage() {
                 </div>
             </section>
 
-            <section className="py-24 bg-gray-50">
+            <section className="py-24 bg-muted">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                         {workshops.map((workshop) => (
-                            <div key={workshop.slug} className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                            <div key={workshop.slug} className="bg-card border border-card-border rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                                 <div className="relative h-72 w-full overflow-hidden">
                                     <Image
                                         src={workshop.image}
@@ -37,7 +37,7 @@ export default function TrainingPage() {
                                         className="object-cover"
                                     />
                                     <div className="absolute top-4 left-4">
-                                        <Badge className="bg-white/95 backdrop-blur-md shadow-sm border-0">{workshop.category}</Badge>
+                                        <Badge className="bg-card/95 dark:bg-slate-800/95 backdrop-blur-md shadow-sm border-0">{workshop.category}</Badge>
                                     </div>
                                     {workshop.seatsLeft < 10 && (
                                         <div className="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
@@ -47,25 +47,25 @@ export default function TrainingPage() {
                                 </div>
 
                                 <div className="p-8 flex flex-col flex-grow">
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-4">{workshop.title}</h2>
-                                    <p className="text-gray-600 mb-8 leading-relaxed flex-grow">
+                                    <h2 className="text-2xl font-bold text-foreground mb-4">{workshop.title}</h2>
+                                    <p className="text-muted-foreground mb-8 leading-relaxed flex-grow">
                                         {workshop.description}
                                     </p>
 
-                                    <div className="space-y-4 mb-8 bg-gray-50/50 p-6 rounded-2xl border border-gray-50">
-                                        <div className="flex items-center gap-3 text-gray-700">
+                                    <div className="space-y-4 mb-8 bg-muted p-6 rounded-2xl border border-card-border">
+                                        <div className="flex items-center gap-3 text-foreground">
                                             <Calendar size={18} className="text-primary shrink-0" />
                                             <span className="font-medium">{workshop.date}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 text-gray-700">
+                                        <div className="flex items-center gap-3 text-foreground">
                                             <MapPin size={18} className="text-primary shrink-0" />
                                             <span className="font-medium">{workshop.location}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 text-gray-700">
+                                        <div className="flex items-center gap-3 text-foreground">
                                             <Users size={18} className="text-primary shrink-0" />
                                             <span className="font-medium">Led by {workshop.instructor}</span>
                                         </div>
-                                        <div className="flex items-center gap-3 text-gray-700">
+                                        <div className="flex items-center gap-3 text-foreground">
                                             <IndianRupee size={18} className="text-primary shrink-0" />
                                             <span className="font-medium font-display text-lg">₹{workshop.price.toLocaleString("en-IN")}</span>
                                         </div>
@@ -85,30 +85,30 @@ export default function TrainingPage() {
                 </div>
             </section>
 
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-background">
                 <div className="container mx-auto px-4 md:px-6 text-center max-w-4xl">
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-8">Why Learn With Us?</h2>
+                    <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-8">Why Learn With Us?</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="p-6">
                             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
                                 <Users size={32} />
                             </div>
-                            <h3 className="text-xl font-bold mb-3">Expert Faculty</h3>
-                            <p className="text-gray-600 text-sm">Learn directly from internationally renowned implantologists and periodontists.</p>
+                            <h3 className="text-xl font-bold text-foreground mb-3">Expert Faculty</h3>
+                            <p className="text-muted-foreground text-sm">Learn directly from internationally renowned implantologists and periodontists.</p>
                         </div>
                         <div className="p-6">
                             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><line x1="10" y1="9" x2="8" y2="9" /></svg>
                             </div>
-                            <h3 className="text-xl font-bold mb-3">Hands-on Practice</h3>
-                            <p className="text-gray-600 text-sm">Extensive practical sessions on models using the latest instrumentation.</p>
+                            <h3 className="text-xl font-bold text-foreground mb-3">Hands-on Practice</h3>
+                            <p className="text-muted-foreground text-sm">Extensive practical sessions on models using the latest instrumentation.</p>
                         </div>
                         <div className="p-6">
                             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>
                             </div>
-                            <h3 className="text-xl font-bold mb-3">Ongoing Support</h3>
-                            <p className="text-gray-600 text-sm">Post-course mentorship to ensure you confidently apply what you learned in your practice.</p>
+                            <h3 className="text-xl font-bold text-foreground mb-3">Ongoing Support</h3>
+                            <p className="text-muted-foreground text-sm">Post-course mentorship to ensure you confidently apply what you learned in your practice.</p>
                         </div>
                     </div>
                 </div>

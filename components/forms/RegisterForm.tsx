@@ -42,7 +42,6 @@ function RegisterFormContent() {
 
     const onSubmit = async (data: RegisterFormValues) => {
         setIsSubmitting(true);
-        // Simulate API call
         console.log("Registration submitted", data);
         setTimeout(() => {
             setIsSubmitting(false);
@@ -52,59 +51,40 @@ function RegisterFormContent() {
         }, 1500);
     };
 
+    const inputClasses = "w-full px-4 py-3 rounded-lg border border-card-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-muted-foreground/50";
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {isSuccess && (
-                <div className="p-4 rounded-lg bg-green-50 text-green-800 border border-green-200 shadow-sm animate-in fade-in">
+                <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800 shadow-sm">
                     Thank you for registering! We have sent a confirmation email with further details.
                 </div>
             )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-gray-700">Full Name (Dr.)</label>
-                    <input
-                        id="name"
-                        {...register("name")}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                        placeholder="Dr. John Doe"
-                    />
-                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
+                    <label htmlFor="name" className="text-sm font-medium text-foreground">Full Name (Dr.)</label>
+                    <input id="name" {...register("name")} className={inputClasses} placeholder="Dr. John Doe" />
+                    {errors.name && <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.name.message}</p>}
                 </div>
 
                 <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-gray-700">Email Address</label>
-                    <input
-                        id="email"
-                        type="email"
-                        {...register("email")}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                        placeholder="john@example.com"
-                    />
-                    {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+                    <label htmlFor="email" className="text-sm font-medium text-foreground">Email Address</label>
+                    <input id="email" type="email" {...register("email")} className={inputClasses} placeholder="john@example.com" />
+                    {errors.email && <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.email.message}</p>}
                 </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone Number (WhatsApp)</label>
-                    <input
-                        id="phone"
-                        type="tel"
-                        {...register("phone")}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                        placeholder="+91 98765 43210"
-                    />
-                    {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
+                    <label htmlFor="phone" className="text-sm font-medium text-foreground">Phone Number (WhatsApp)</label>
+                    <input id="phone" type="tel" {...register("phone")} className={inputClasses} placeholder="+91 98765 43210" />
+                    {errors.phone && <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.phone.message}</p>}
                 </div>
 
                 <div className="space-y-2">
-                    <label htmlFor="experience" className="text-sm font-medium text-gray-700">Years of Clinical Experience</label>
-                    <select
-                        id="experience"
-                        {...register("experience")}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white"
-                    >
+                    <label htmlFor="experience" className="text-sm font-medium text-foreground">Years of Clinical Experience</label>
+                    <select id="experience" {...register("experience")} className={inputClasses}>
                         <option value="">Select Experience</option>
                         <option value="student">Dental Student / Intern</option>
                         <option value="0-2">0 - 2 Years</option>
@@ -112,17 +92,13 @@ function RegisterFormContent() {
                         <option value="5-10">5 - 10 Years</option>
                         <option value="10+">10+ Years</option>
                     </select>
-                    {errors.experience && <p className="text-red-500 text-xs mt-1">{errors.experience.message}</p>}
+                    {errors.experience && <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.experience.message}</p>}
                 </div>
             </div>
 
             <div className="space-y-2">
-                <label htmlFor="workshopSlug" className="text-sm font-medium text-gray-700">Select Workshop</label>
-                <select
-                    id="workshopSlug"
-                    {...register("workshopSlug")}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white"
-                >
+                <label htmlFor="workshopSlug" className="text-sm font-medium text-foreground">Select Workshop</label>
+                <select id="workshopSlug" {...register("workshopSlug")} className={inputClasses}>
                     <option value="">Choose a Workshop...</option>
                     {workshops.map(w => (
                         <option key={w.slug} value={w.slug}>
@@ -130,14 +106,14 @@ function RegisterFormContent() {
                         </option>
                     ))}
                 </select>
-                {errors.workshopSlug && <p className="text-red-500 text-xs mt-1">{errors.workshopSlug.message}</p>}
+                {errors.workshopSlug && <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.workshopSlug.message}</p>}
             </div>
 
-            <div className="pt-4 border-t border-gray-100">
+            <div className="pt-4 border-t border-card-border">
                 <Button type="submit" variant="primary" size="lg" className="w-full md:w-auto shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5" disabled={isSubmitting}>
                     {isSubmitting ? "Processing..." : "Secure My Spot"}
                 </Button>
-                <p className="text-xs text-gray-500 mt-4 text-center md:text-left">
+                <p className="text-xs text-muted-foreground mt-4 text-center md:text-left">
                     By registering, you agree to our Terms of Service. Payment links will be shared post-registration confirmation.
                 </p>
             </div>
@@ -147,7 +123,7 @@ function RegisterFormContent() {
 
 export function RegisterForm() {
     return (
-        <Suspense fallback={<div className="p-8 text-center text-gray-500">Loading form...</div>}>
+        <Suspense fallback={<div className="p-8 text-center text-muted-foreground">Loading form...</div>}>
             <RegisterFormContent />
         </Suspense>
     );
