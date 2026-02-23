@@ -17,20 +17,26 @@ export const metadata: Metadata = {
   description: "Advanced dental implants, biomaterials, and expert dental training workshops by Kindway BioReZens in India.",
 };
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ChatWidgets } from "@/components/ChatWidgets";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased min-h-screen flex flex-col`}>
-        <Navbar />
-        <main className="flex-grow pt-20">
-          {children}
-        </main>
-        <Footer />
-        <ContactBar />
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+          <Navbar />
+          <main className="flex-grow pt-20">
+            {children}
+          </main>
+          <Footer />
+          <ContactBar />
+          <ChatWidgets />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,6 +1,12 @@
 "use client";
 import React, { useEffect } from "react";
 
+declare global {
+    interface Window {
+        Tawk_API?: any;
+    }
+}
+
 export function ChatWidgets() {
     useEffect(() => {
         // Tawk.to Initialization

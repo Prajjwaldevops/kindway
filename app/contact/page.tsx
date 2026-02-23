@@ -44,7 +44,9 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-semibold text-gray-900 mb-1">Office Address</h3>
-                                        <p className="text-gray-600">Kindway Biorezens Pvt. Ltd.<br />Varanasi, Uttar Pradesh, India</p>
+                                        <a href="https://maps.google.com/?q=Kindway+Biorezens+Pvt.+Ltd.+Varanasi+Uttar+Pradesh+India" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-accent transition">
+                                            Kindway Biorezens Pvt. Ltd.<br />Varanasi, Uttar Pradesh, India
+                                        </a>
                                     </div>
                                 </div>
 
