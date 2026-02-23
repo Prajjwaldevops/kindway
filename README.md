@@ -1,6 +1,7 @@
-TOOK 7 HOURS TO COMPLETRLY TRANSFORM DULL LOKKING HTML CSS SITE TO NEXT JS SITE YEAH I TOOK TIME BUT NOT THE FASTEST BUT I CAN ASSURE THE EFFICIENT USED THE SAME DATA CODE AS GIVEN TRANSFORMED THE WEBSITE ONLY STRICTLY THATS WAS ALL THANK YOU HAXPLOREE TEAM
 
+It took me about seven hours to completely transform a dull-looking HTML and CSS website into a Next.js site. I may not have been the fastest, but I ensured the process was efficient and precise. I strictly used the same data and existing codebase, focusing only on transforming the structure and framework of the website without altering its core content.
 
+Thank you to the Haxplore team for the opportunity and support.
 
 
 
