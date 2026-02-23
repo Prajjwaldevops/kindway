@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ContactBar } from "@/components/sections/ContactBar";
 import { ChatWidgets } from "@/components/ChatWidgets";
+import { Chatbot } from "@/components/Chatbot";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Footer />
         <ContactBar />
         <ChatWidgets />
+        <Chatbot />
       </body>
     </html>
   );
